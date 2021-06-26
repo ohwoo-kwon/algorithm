@@ -1,0 +1,10 @@
+a, b = input().split()
+plus = int(a) + int(b)
+minus = int(a) - int(b)
+mul = int(a)*int(b)
+div = int(a) // int(b)
+
+print(a + '+' + b + '=' + str(plus))
+print(a + '-' + b + '=' + str(minus))
+print(a + '*' + b + '=' + str(mul))
+print(a + '/' + b + '=' + str(div))
