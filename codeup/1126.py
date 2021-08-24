@@ -1,0 +1,13 @@
+a, b = input().split()
+a = int(a)
+b = int(b)
+c = a + b
+d = a - b
+e = a * b
+f = a / b
+g = a % b
+print(str(a) + ' + ' + str(b) + ' = ' + str(c))
+print(str(a) + ' - ' + str(b) + ' = ' + str(d))
+print(str(a) + ' * ' + str(b) + ' = ' + str(e))
+print(str(a) + ' / ' + str(b) + ' = ' + '%d' %f)
+print(str(a) + ' % ' + str(b) + ' = ' + str(g))
