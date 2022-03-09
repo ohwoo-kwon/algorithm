@@ -1,9 +1,9 @@
 N = int(input())
-n = 2
+i = 2
 while N > 1:
-    if N % n:
-        n += 1
+    if not N % i:
+        print(i)
+        N //= i
         continue
     else:
-        print(n)
-        N //= n
+        i += 1
