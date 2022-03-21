@@ -1,40 +1,38 @@
-def Perm(idx, start):
-    if idx == N//2:
-        s1, s2 = Stat()
-        diff.append(abs(s1 - s2))
-        return
-    if idx == 0:
-        teamA.append(0)
-        teamB.remove(0)
-        Perm(idx+1, 1)
-    else:
-        for i in range(start, N):
-            teamA.append(i)
-            teamB.remove(i)
-            Perm(idx+1, i+1)
-            teamA.remove(i)
-            teamB.append(i)
+def make_team(cnt, start, team_start, team_link):
+    if cnt == N//2:
+        team_start_score = 0
+        team_link_score = 0
 
-def Stat():
-    s1 = 0
-    s2 = 0
-    for i in range(N//2):
-        for j in range(i+1, N//2):
-            s1 += S[teamA[i]][teamA[j]]
-            s1 += S[teamA[j]][teamA[i]]
-            s2 += S[teamB[i]][teamB[j]]
-            s2 += S[teamB[j]][teamB[i]]
-    return s1, s2
+        for i in range(N//2):
+            for j in range(i+1, N//2):
+                team_start_score += S[team_start[i]][team_start[j]]
+                team_start_score += S[team_start[j]][team_start[i]]
+                team_link_score += S[team_link[i]][team_link[j]]
+                team_link_score += S[team_link[j]][team_link[i]]
+
+        results.append(abs(team_start_score - team_link_score))
+        return
+
+    if cnt == 0:
+        team_start.append(0)
+        team_link.remove(0)
+        make_team(cnt+1, 1, team_start, team_link)
+        return
+
+    for member in range(start, N):
+        team_start.append(member)
+        team_link.remove(member)
+        make_team(cnt+1, member+1, team_start, team_link)
+        team_start.remove(member)
+        team_link.append(member)
+
 
 N = int(input())
-S = [list(map(int, input().split())) for _ in range(N)]
+S = []
+for _ in range(N):
+    S.append(list(map(int, input().split())))
 
-diff = []
-teamA = []
-teamB = []
-for i in range(N):
-    teamB.append(i)
+results = []
 
-Perm(0, 0)
-
-print(min(diff))
+make_team(0, 0, [], [i for i in range(N)])
+print(min(results))
