@@ -1,10 +1,9 @@
 N = int(input())
+withdrawal_times = list(map(int, input().split()))
 
-times = list(map(int, input().split()))
-
-times.sort()
+withdrawal_times.sort()
 
 for i in range(1, N):
-    times[i] += times[i-1]
+    withdrawal_times[i] += withdrawal_times[i-1]
 
-print(sum(times))
+print(sum(withdrawal_times))
