@@ -37,4 +37,5 @@ for _ in range(tc):
                 DFS(r, c)
                 result += 1
 
+
     print(result)
